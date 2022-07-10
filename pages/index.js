@@ -16,18 +16,18 @@ export default function Home() {
           <div className="flex items-center">
             <img
               className="hidden h-16 w-16 rounded-full sm:block"
-              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.6&w=256&h=256&q=80"
-              alt=""
+              src="https://avatars.dicebear.com/api/open-peeps/placeholder.svg"
+              alt="avatra"
             />
             <div>
               <div className="flex items-center">
                 <img
                   className="h-16 w-16 rounded-full sm:hidden"
-                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.6&w=256&h=256&q=80"
+                  src="https://avatars.dicebear.com/api/open-peeps/placeholder.svg"
                   alt=""
                 />
                 <h1 className="ml-3 text-2xl font-bold leading-7 text-gray-900 sm:leading-9 sm:truncate">
-                  Good morning, Emilia Birch
+                  Good morning, Sandeep Yaramchitti
                 </h1>
               </div>
               <dl className="mt-6 flex flex-col sm:ml-3 sm:mt-1 sm:flex-row sm:flex-wrap">
@@ -37,7 +37,7 @@ export default function Home() {
                     className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
                     aria-hidden="true"
                   />
-                  Duke street studio
+                  DevKit
                 </dd>
                 <dt className="sr-only">Account status</dt>
                 <dd className="mt-3 flex items-center text-sm text-gray-500 font-medium sm:mr-6 sm:mt-0 capitalize">
@@ -56,13 +56,13 @@ export default function Home() {
             type="button"
             className="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
           >
-            Add money
+            More Details...
           </button>
           <button
             type="button"
             className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
           >
-            Send money
+            Create Favorites...
           </button>
         </div>
       </div>
