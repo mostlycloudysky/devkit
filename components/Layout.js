@@ -54,12 +54,16 @@ const transactions = [
 ]
 
 
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
 export default function Layout({children}) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
+
+  const router = useRouter();
+  const currentRoute = router.pathname;
 
   return (
     <>
@@ -88,7 +92,7 @@ export default function Layout({children}) {
                 leaveFrom="translate-x-0"
                 leaveTo="-translate-x-full"
               >
-                <Dialog.Panel className="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-cyan-700">
+                <Dialog.Panel className="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-black">
                   <Transition.Child
                     as={Fragment}
                     enter="ease-in-out duration-300"
@@ -117,7 +121,7 @@ export default function Layout({children}) {
                     />
                   </div>
                   <nav
-                    className="mt-5 flex-shrink-0 h-full divide-y divide-cyan-800 overflow-y-auto"
+                    className="mt-5 flex-shrink-0 h-full divide-y bg-black overflow-y-auto"
                     aria-label="Sidebar"
                   >
                     <div className="px-2 space-y-1">
@@ -127,13 +131,13 @@ export default function Layout({children}) {
                           href={item.href}
                           className={classNames(
                             item.current
-                              ? 'bg-cyan-800 text-white'
-                              : 'text-cyan-100 hover:text-white hover:bg-cyan-600',
+                              ? 'bg-blue-600 text-white'
+                              : 'text-cyan-100 hover:text-white hover:bg-blue-600',
                             'group flex items-center px-2 py-2 text-base font-medium rounded-md'
                           )}
                           aria-current={item.current ? 'page' : undefined}
                         >
-                          <item.icon className="mr-4 flex-shrink-0 h-6 w-6 text-cyan-200" aria-hidden="true" />
+                          <item.icon className="mr-4 flex-shrink-0 h-6 w-6 text-blue-200" aria-hidden="true" />
                           {item.name}
                         </a>
                       ))}
@@ -144,9 +148,9 @@ export default function Layout({children}) {
                           <a
                             key={item.name}
                             href={item.href}
-                            className="group flex items-center px-2 py-2 text-base font-medium rounded-md text-cyan-100 hover:text-white hover:bg-cyan-600"
+                            className="group flex items-center px-2 py-2 text-base font-medium rounded-md text-cyan-100 hover:text-white hover:bg-blue-600"
                           >
-                            <item.icon className="mr-4 h-6 w-6 text-cyan-200" aria-hidden="true" />
+                            <item.icon className="mr-4 h-6 w-6 text-blue-200" aria-hidden="true" />
                             {item.name}
                           </a>
                         ))}
@@ -165,27 +169,26 @@ export default function Layout({children}) {
         {/* Static sidebar for desktop */}
         <div className="hidden lg:flex lg:w-64 lg:flex-col lg:fixed lg:inset-y-0">
           {/* Sidebar component, swap this element with another sidebar if you like */}
-          <div className="flex flex-col flex-grow bg-cyan-700 pt-5 pb-4 overflow-y-auto">
+          <div className="flex flex-col flex-grow bg-black  pt-5 pb-4 overflow-y-auto">
             <div className="flex items-center flex-shrink-0 px-4">
-              <img
-                className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/easywire-logo-cyan-300-mark-white-text.svg"
-                alt="Easywire logo"
-              />
+            <img
+                className="w-12 h-12 object-contain cursor-pointer pr-2"
+                  src="/logo.png"
+                  alt="logo" />
+                <span className='pl-2 font-bold text-white text-xl'>DevKit</span>   
             </div>
-            <nav className="mt-5 flex-1 flex flex-col divide-y divide-cyan-800 overflow-y-auto" aria-label="Sidebar">
+            <nav className="mt-5 flex-1 flex flex-col divide-y bg-black overflow-y-auto" aria-label="Sidebar">
               <div className="px-2 space-y-1">
                 {navigation.map((item) => (
-                  // eslint-disable-next-line react/jsx-key
-                  <Link href={item.href}>
+                  <Link href={item.href} key={item.key}>
                     <a
                     className={classNames(
-                      item.current ? 'bg-cyan-800 text-white' : 'text-cyan-100 hover:text-white hover:bg-cyan-600',
+                      currentRoute === item.href ? 'bg-blue-600 text-white' : 'text-blue-100 hover:text-white hover:bg-blue-600',
                       'group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md'
                     )}
-                    aria-current={item.current ? 'page' : undefined}
+                    // aria-current={item.current ? 'page' : undefined}
                   >
-                    <item.icon className="mr-4 flex-shrink-0 h-6 w-6 text-cyan-200" aria-hidden="true" />
+                    <item.icon className="mr-4 flex-shrink-0 h-6 w-6 text-blue-200" />
                     {item.name}
                   </a>
                   </Link>
