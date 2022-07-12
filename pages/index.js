@@ -11,6 +11,7 @@ import DevTo from '../components/alltabs/DevTo';
 import TabNavItem from '../components/TabNavItem';
 import TabContent from '../components/TabContent';
 import Hashnode from '../components/alltabs/Hashnode';
+import Activity from '../components/Activity';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -23,7 +24,7 @@ export default function Home() {
   return (
     <div>
         <div className="bg-white shadow">
-          <div className="px-4 sm:px-6 lg:max-w-7xl lg:mx-auto lg:px-8">
+          <div className="px-2 sm:px-6 lg:max-w-7xl lg:mx-auto lg:px-8">
             <div className="py-6 md:flex md:items-center md:justify-between lg:border-t lg:border-gray-200">
               <div className="flex-1 min-w-0">
                 {/* Profile */}
@@ -109,10 +110,12 @@ export default function Home() {
             </div>
           </div>
           <div className="pr-4 sm:pr-6 lg:pr-8 lg:flex-shrink-0  lg:border-gray-200 xl:pr-0">
-            <div className="h-full pl-6 py-6 lg:w-80">
+            <div className="h-full py-6 lg:w-80">
               {/* Start right column area */}
-              <div className="h-full relative" style={{ minHeight: '16rem' }}>
-                <div className="absolute inset-0 border-2 border-gray-200 border-dashed rounded-lg" />
+              <div className="h-full relative ml-2 mr-2" style={{ minHeight: '16rem' }}>
+                <div className="absolute inset-0  rounded-lg">
+                  <Activity />
+                </div>
               </div>
               {/* End right column area */}
             </div>
