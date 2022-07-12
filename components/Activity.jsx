@@ -8,13 +8,18 @@ function Activity() {
         { project: 'Workcation', commit: '2d89f0c8', environment: 'production', time: '1h' },
         { project: 'Workcation', commit: '2d89f0c8', environment: 'production', time: '1h' },
         { project: 'Workcation', commit: '2d89f0c8', environment: 'production', time: '1h' },
-        // More items...
+        { project: 'Workcation', commit: '2d89f0c8', environment: 'production', time: '1h' },
+        { project: 'Workcation', commit: '2d89f0c8', environment: 'production', time: '1h' },
+        { project: 'Workcation', commit: '2d89f0c8', environment: 'production', time: '1h' },
+        { project: 'Workcation', commit: '2d89f0c8', environment: 'production', time: '1h' },
+        { project: 'Workcation', commit: '2d89f0c8', environment: 'production', time: '1h' },
+        { project: 'Workcation', commit: '2d89f0c8', environment: 'production', time: '1h' },
+        { project: 'Workcation', commit: '2d89f0c8', environment: 'production', time: '1h' },
     ]
 
   return (
-    // <div className="bg-gray-50 pr-4 sm:pr-6 lg:pr-8 lg:flex-shrink-0 lg:border-l lg:border-gray-200 xl:pr-0">
         <>
-            <div className="pt-6 pb-2">
+            <div className="pt-3 pb-2">
                 <h2 className="text-sm font-semibold">Activity</h2>
             </div>
             <ul role="list" className="divide-y divide-gray-200">
