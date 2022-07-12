@@ -1,68 +1,24 @@
 /* eslint-disable @next/next/no-img-element */
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import { useRouter } from "next/router";
-import { useState, useEffect } from 'react';
+
+import { useState } from 'react';
 
 import {
   CheckCircleIcon,
   OfficeBuildingIcon,
 } from '@heroicons/react/solid'
-import Cards from './cards'
-import Link from 'next/link'
-import Tabs from '../components/Tabs';
-
+import MediumTabs from '../components/alltabs/MediumTabs';
+import DevTo from '../components/alltabs/DevTo';
+import TabNavItem from '../components/TabNavItem';
+import TabContent from '../components/TabContent';
+import Hashnode from '../components/alltabs/Hashnode';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
 export default function Home() {
-  const tabs = [
-    { name: 'Medium', href: '/cards', current: true },
-    { name: 'Devto', href: '#', current: false },
-    { name: 'HashNode', href: '#', current: false },
-    { name: 'Github', href: '#', current: false },
-  ]
 
-  const { query } = useRouter();
-
-  let isTabOneSelected = !!query.tabOne;
-  const isTabTwoSelected = !!query.tabTwo ;
-  const isTabThreeSelected = !!query.tabThree ;
-  const isTabFourSelected = !!query.tabFour ;
-
-
-  const [post, setPost] = useState();
-
-  useEffect(() => {
-    setPost('This is for medium blogs only')
-
-  }, [])
-  
-
-
-  useEffect(() => {
-    console.log('Use effect has been triggered..')
-
-    if (isTabOneSelected) {
-      setPost('This is only medium posts')
-    }
-
-    if (isTabTwoSelected) {
-      setPost('This is only devto posts')
-    }
-
-    if (isTabThreeSelected) {
-      setPost('This is only hashnode posts')
-    }
-
-    if (isTabFourSelected) {
-      setPost('This is fourth post')
-    }
-
-  }, [isTabOneSelected, isTabTwoSelected, isTabThreeSelected, isTabFourSelected])
+  const [activeTab, setActiveTab] = useState("tab1");
 
   return (
     <div>
@@ -134,36 +90,18 @@ export default function Home() {
                 <div className="relative h-full" style={{ minHeight: '36rem' }}>
                   <div className="absolute inset-0 border-2 border-gray-200  rounded-lg">
                   <nav className="relative z-0 rounded-lg shadow flex divide-x divide-gray-200" aria-label="Tabs">
-                    {/* {tabs.map((tab, tabIdx) => (
-                      <Link href={tab.href} key={tab.name}>
-                        <a
-                        aria-current={tab.current ? 'page' : undefined}
-                        className={classNames(
-                          tab.current ? 'text-gray-900' : 'text-gray-500 hover:text-gray-700',
-                          tabIdx === 0 ? 'rounded-l-lg' : '',
-                          tabIdx === tabs.length - 1 ? 'rounded-r-lg' : '',
-                          'group relative min-w-0 flex-1 overflow-hidden bg-white py-4 px-6 text-sm font-medium text-center hover:bg-gray-50 focus:z-10'
-                        )}
-                      >
-                        <span>{tab.name}</span>
-                        <span
-                          aria-hidden="true"
-                          className={classNames(
-                            tab.current ? 'bg-rose-500' : 'bg-transparent',
-                            'absolute inset-x-0 bottom-0 h-0.5'
-                          )}
-                        />
-                      </a>
-                      </Link>
-
-                    ))} */}
-                    <Tabs href="/?tabOne=true" title='Medium' isSelected={isTabOneSelected}  />
-                    <Tabs href="/?tabTwo=true" title='DevTo' isSelected={isTabTwoSelected} />
-                    <Tabs href="/?tabThree=true" title='HashNode' isSelected={isTabThreeSelected} />
-                    <Tabs href="/?tabFour=true" title='Github' isSelected={isTabFourSelected} />
+                    <TabNavItem title="Medium" id="tab1" activeTab={activeTab} setActiveTab={setActiveTab}></TabNavItem>
+                    <TabNavItem title="Dev.to" id="tab2" activeTab={activeTab} setActiveTab={setActiveTab}></TabNavItem>
+                    <TabNavItem title="Hashnode" id="tab3" activeTab={activeTab} setActiveTab={setActiveTab}></TabNavItem>
+                    <TabNavItem title="Github" id="tab4" activeTab={activeTab} setActiveTab={setActiveTab}></TabNavItem>
                   </nav>
-                     {/* <Cards />        */}
-                     <Cards />
+                     <div>
+                       <TabContent id="tab1" activeTab={activeTab}>{<MediumTabs />}</TabContent>
+                       <TabContent id="tab2" activeTab={activeTab}>{<DevTo />}</TabContent>
+                       <TabContent id="tab3" activeTab={activeTab}>{<Hashnode />}</TabContent>
+                       <TabContent id="tab4" activeTab={activeTab}>{<Hashnode />}</TabContent>
+                     </div>
+
                   </div>
                 </div>
                 {/* End main area */}
