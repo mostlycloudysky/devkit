@@ -28,7 +28,7 @@ export default function Home() {
 
   const { query } = useRouter();
 
-  let isTabOneSelected = !!query.tabOne;
+  let isTabOneSelected = !!query.tabOne || true;
   const isTabTwoSelected = !!query.tabTwo ;
   const isTabThreeSelected = !!query.tabThree ;
   const isTabFourSelected = !!query.tabFour ;
