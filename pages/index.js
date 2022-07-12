@@ -28,7 +28,7 @@ export default function Home() {
 
   const { query } = useRouter();
 
-  let isTabOneSelected = !!query.tabOne || true;
+  let isTabOneSelected = !!query.tabOne;
   const isTabTwoSelected = !!query.tabTwo ;
   const isTabThreeSelected = !!query.tabThree ;
   const isTabFourSelected = !!query.tabFour ;
@@ -40,6 +40,7 @@ export default function Home() {
     setPost('This is for medium blogs only')
 
   }, [])
+  
 
 
   useEffect(() => {
