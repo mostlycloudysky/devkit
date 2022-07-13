@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Children, Fragment, useState } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 import {
@@ -31,8 +32,8 @@ import { useRouter } from 'next/router';
 
 const navigation = [
   { name: 'Home', href: '/', icon: HomeIcon, current: true },
-  { name: 'For you', href: '/mykit', icon: CodeIcon, current: false },
-  { name: 'Trending', href: '/popular', icon: TrendingUpIcon, current: false },
+  { name: 'For you', href: '/foryou', icon: CodeIcon, current: false },
+  { name: 'Trending', href: '/trending', icon: TrendingUpIcon, current: false },
   { name: 'Playground', href: '/playground', icon: PlayIcon, current: false },
 ]
 const secondaryNavigation = [
@@ -117,11 +118,13 @@ export default function Layout({children}) {
                     </div>
                   </Transition.Child>
                   <div className="flex-shrink-0 flex items-center px-4">
-                    <img
-                      className="h-8 w-auto"
-                      src="https://tailwindui.com/img/logos/easywire-logo-cyan-300-mark-white-text.svg"
-                      alt="Easywire logo"
-                    />
+                    <div className="flex items-center flex-shrink-0 px-4">
+                      <img
+                          className="w-12 h-12 object-contain cursor-pointer pr-2"
+                            src="/logo.png"
+                            alt="logo" />
+                          <span className='pl-2 font-bold text-white text-xl'>DevKit</span>   
+                      </div>
                   </div>
                   <nav
                     className="mt-5 flex-shrink-0 h-full divide-y bg-black overflow-y-auto"

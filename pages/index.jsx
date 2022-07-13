@@ -23,7 +23,7 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState("tab1");
 
   return (
-    <div>
+    <>
         <div className="bg-white shadow">
           <div className="px-2 sm:px-6 lg:max-w-7xl lg:mx-auto lg:px-8">
             <div className="py-6 md:flex md:items-center md:justify-between lg:border-t lg:border-gray-200">
@@ -79,6 +79,6 @@ export default function Home() {
             </div>
           </div>
     </div>    
-    </div>
+    </>
   )
 }
