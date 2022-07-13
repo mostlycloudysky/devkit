@@ -31,8 +31,8 @@ import { useRouter } from 'next/router';
 
 const navigation = [
   { name: 'Home', href: '/', icon: HomeIcon, current: true },
-  { name: 'For you', href: '/mykit', icon: CodeIcon, current: false },
-  { name: 'Trending', href: '/popular', icon: TrendingUpIcon, current: false },
+  { name: 'For you', href: '/foryou', icon: CodeIcon, current: false },
+  { name: 'Trending', href: '/trending', icon: TrendingUpIcon, current: false },
   { name: 'Playground', href: '/playground', icon: PlayIcon, current: false },
 ]
 const secondaryNavigation = [
