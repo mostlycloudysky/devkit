@@ -10,6 +10,10 @@ const CodeEditor = ({ onChange, language, code, theme }) => {
     onChange("code", value);
   };
 
+  const monacoEditorOptions = {
+    fontSize: 16
+  }
+
   return (
     <div className="overlay rounded-md overflow-hidden w-full h-full shadow-4xl">
       <Editor
@@ -18,8 +22,9 @@ const CodeEditor = ({ onChange, language, code, theme }) => {
         language={language || "javascript"}
         value={value}
         theme={theme}
-        defaultValue="// Welcome to the playground"
+        defaultValue="// some comment"
         onChange={handleEditorChange}
+        options={monacoEditorOptions}
       />
     </div>
   );
