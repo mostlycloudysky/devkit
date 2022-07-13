@@ -1,8 +1,15 @@
 import React from 'react'
+import Cards from '../Cards'
 
 function MediumTabs() {
   return (
-    <div>MediumTabs</div>
+    <>
+      <Cards />
+      <Cards />
+      <Cards />
+      <Cards />
+      <div className='pt-5'></div>
+    </>
   )
 }
 

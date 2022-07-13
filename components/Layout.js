@@ -3,14 +3,18 @@ import { Dialog, Menu, Transition } from '@headlessui/react'
 import {
   BellIcon,
   ClockIcon,
+  CodeIcon,
   CogIcon,
   CreditCardIcon,
   DocumentReportIcon,
   HomeIcon,
   MenuAlt1Icon,
+  PlayIcon,
   QuestionMarkCircleIcon,
   ScaleIcon,
   ShieldCheckIcon,
+  TrendingDownIcon,
+  TrendingUpIcon,
   UserGroupIcon,
   XIcon,
 } from '@heroicons/react/outline'
@@ -27,13 +31,12 @@ import { useRouter } from 'next/router';
 
 const navigation = [
   { name: 'Home', href: '/', icon: HomeIcon, current: true },
-  { name: 'Mykit', href: '/mykit', icon: ClockIcon, current: false },
-  { name: 'Popular', href: '/popular', icon: ScaleIcon, current: false },
-  { name: 'Mostviews', href: '/mostviewed', icon: CreditCardIcon, current: false },
-  { name: 'Playground', href: '/playground', icon: UserGroupIcon, current: false },
+  { name: 'For you', href: '/mykit', icon: CodeIcon, current: false },
+  { name: 'Trending', href: '/popular', icon: TrendingUpIcon, current: false },
+  { name: 'Playground', href: '/playground', icon: PlayIcon, current: false },
 ]
 const secondaryNavigation = [
-  { name: 'Settings', href: '#', icon: CogIcon },
+  { name: 'Settings', href: '/settings', icon: CogIcon },
 ]
 const cards = [
   { name: 'Account balance', href: '#', icon: ScaleIcon, amount: '$30,659.45' },
@@ -148,7 +151,7 @@ export default function Layout({children}) {
                           <a
                             key={item.name}
                             href={item.href}
-                            className="group flex items-center px-2 py-2 text-base font-medium rounded-md text-cyan-100 hover:text-white hover:bg-blue-600"
+                            className="group flex items-center px-2 py-2 text-base font-medium rounded-md text-blue-100 hover:text-white hover:bg-blue-600"
                           >
                             <item.icon className="mr-4 h-6 w-6 text-blue-200" aria-hidden="true" />
                             {item.name}
@@ -186,7 +189,6 @@ export default function Layout({children}) {
                       currentRoute === item.href ? 'bg-blue-600 text-white' : 'text-blue-100 hover:text-white hover:bg-blue-600',
                       'group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md'
                     )}
-                    // aria-current={item.current ? 'page' : undefined}
                   >
                     <item.icon className="mr-4 flex-shrink-0 h-6 w-6 text-blue-200" />
                     {item.name}
@@ -201,9 +203,9 @@ export default function Layout({children}) {
                     <a
                       key={item.name}
                       href={item.href}
-                      className="group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md text-cyan-100 hover:text-white hover:bg-cyan-600"
+                      className="group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md text-blue-100 hover:text-white hover:bg-blue-600"
                     >
-                      <item.icon className="mr-4 h-6 w-6 text-cyan-200" aria-hidden="true" />
+                      <item.icon className="mr-4 h-6 w-6 text-blue-200" aria-hidden="true" />
                       {item.name}
                     </a>
                   ))}
