@@ -21,7 +21,7 @@ return (
         <span className=" font-bold">{title}</span>
         <span area-hidden="true" 
         className={classNames(
-            activeTab === id  ? 'bg-blue-600' : 'bg-transparent',
+            activeTab === id  ? 'bg-gradient-to-r from-cyan-500 to-blue-600' : 'bg-transparent',
             'absolute inset-x-0 bottom-0 h-0.5'
         )} />
 

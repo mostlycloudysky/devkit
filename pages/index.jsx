@@ -13,6 +13,7 @@ import TabContent from '../components/TabContent';
 import Hashnode from '../components/alltabs/Hashnode';
 import Activity from '../components/Activity';
 import Profile from '../components/Profile';
+import Aws from '../components/alltabs/Aws';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -33,7 +34,7 @@ export default function Home() {
               <div className="mt-6 flex space-x-3 md:mt-0 md:ml-4">
                 <button
                   type="button"
-                  className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-400 hover:bg-blue-600 focus:outline-none "
+                  className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gradient-to-r  hover:bg-gradient-to-r from-cyan-500 to-blue-600 focus:outline-none "
                 >
                   Create Favorites...
                 </button>
@@ -53,12 +54,16 @@ export default function Home() {
                     <TabNavItem title="Dev.to" id="tab2" activeTab={activeTab} setActiveTab={setActiveTab}></TabNavItem>
                     <TabNavItem title="Hashnode" id="tab3" activeTab={activeTab} setActiveTab={setActiveTab}></TabNavItem>
                     <TabNavItem title="Github" id="tab4" activeTab={activeTab} setActiveTab={setActiveTab}></TabNavItem>
+                    <TabNavItem title="AWS Blogs" id="tab5" activeTab={activeTab} setActiveTab={setActiveTab}></TabNavItem>
+
                   </nav>
                      <div>
                        <TabContent id="tab1" activeTab={activeTab}>{<MediumTabs />}</TabContent>
                        <TabContent id="tab2" activeTab={activeTab}>{<DevTo />}</TabContent>
                        <TabContent id="tab3" activeTab={activeTab}>{<Hashnode />}</TabContent>
                        <TabContent id="tab4" activeTab={activeTab}>{<Hashnode />}</TabContent>
+                       <TabContent id="tab5" activeTab={activeTab}>{<Aws />}</TabContent>
+
                      </div>
 
                   </div>

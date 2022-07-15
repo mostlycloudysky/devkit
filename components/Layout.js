@@ -191,7 +191,7 @@ export default function Layout({children}) {
                   <Link href={item.href} key={item.key}>
                     <a
                     className={classNames(
-                      currentRoute === item.href ? 'bg-blue-600 text-white' : 'text-blue-100 hover:text-white hover:bg-blue-600',
+                      currentRoute === item.href ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white' : 'text-blue-100 hover:text-white hover:bg-gradient-to-r from-cyan-500 to-blue-600',
                       'group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md'
                     )}
                   >
@@ -254,7 +254,7 @@ export default function Layout({children}) {
               <div className="ml-4 flex items-center md:ml-6 cursor-pointer outline-none">
                 <button
                   type="button"
-                  className="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500"
+                  className="bg-white p-1 rounded-full text-gray-400 hover:text-cyan-500 "
                 >
                   <span className="sr-only">View notifications</span>
                   <BellIcon className="h-6 w-6 outline-none" aria-hidden="true" />
