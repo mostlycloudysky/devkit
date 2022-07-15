@@ -5,6 +5,7 @@ import { useState } from 'react';
 import {
   CheckCircleIcon,
   OfficeBuildingIcon,
+  PlusCircleIcon,
 } from '@heroicons/react/solid'
 import MediumTabs from '../components/alltabs/MediumTabs';
 import DevTo from '../components/alltabs/DevTo';
@@ -36,7 +37,7 @@ export default function Home() {
                   type="button"
                   className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gradient-to-r  hover:bg-gradient-to-r from-cyan-500 to-blue-600 focus:outline-none "
                 >
-                  Create Favorites...
+                  Choose tags{<PlusCircleIcon className='pl-2 h-7 w-7' />}
                 </button>
               </div>
             </div>
