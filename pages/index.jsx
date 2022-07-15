@@ -15,6 +15,9 @@ import Hashnode from '../components/alltabs/Hashnode';
 import Activity from '../components/Activity';
 import Profile from '../components/Profile';
 import Aws from '../components/alltabs/Aws';
+import Github from '../components/alltabs/Github';
+
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -23,6 +26,14 @@ function classNames(...classes) {
 export default function Home() {
 
   const [activeTab, setActiveTab] = useState("tab1");
+
+  // return (
+  //   <>
+  //     <Confetti />
+  //   </>
+  // )
+
+
 
   return (
     <>
@@ -62,7 +73,7 @@ export default function Home() {
                        <TabContent id="tab1" activeTab={activeTab}>{<MediumTabs />}</TabContent>
                        <TabContent id="tab2" activeTab={activeTab}>{<DevTo />}</TabContent>
                        <TabContent id="tab3" activeTab={activeTab}>{<Hashnode />}</TabContent>
-                       <TabContent id="tab4" activeTab={activeTab}>{<Hashnode />}</TabContent>
+                       <TabContent id="tab4" activeTab={activeTab}>{<Github />}</TabContent>
                        <TabContent id="tab5" activeTab={activeTab}>{<Aws />}</TabContent>
 
                      </div>

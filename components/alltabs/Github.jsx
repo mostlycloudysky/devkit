@@ -1,8 +1,11 @@
 import React from 'react'
+import Confetti from 'react-confetti'
 
 function Github() {
   return (
-    <div>Github</div>
+    <div>
+      <Confetti />
+    </div>
   )
 }
 
