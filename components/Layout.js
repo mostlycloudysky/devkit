@@ -30,7 +30,7 @@ import {
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import HeaderProfile from './HeaderProfile';
-import { useSession, signIn, signOut } from "next-auth/react"
+import { useSession} from "next-auth/react"
 
 const navigation = [
   { name: 'Home', href: '/', icon: HomeIcon, current: true },
