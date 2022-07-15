@@ -5,6 +5,7 @@ import { useState } from 'react';
 import {
   CheckCircleIcon,
   OfficeBuildingIcon,
+  PlusCircleIcon,
 } from '@heroicons/react/solid'
 import MediumTabs from '../components/alltabs/MediumTabs';
 import DevTo from '../components/alltabs/DevTo';
@@ -14,6 +15,9 @@ import Hashnode from '../components/alltabs/Hashnode';
 import Activity from '../components/Activity';
 import Profile from '../components/Profile';
 import Aws from '../components/alltabs/Aws';
+import Github from '../components/alltabs/Github';
+
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -22,6 +26,14 @@ function classNames(...classes) {
 export default function Home() {
 
   const [activeTab, setActiveTab] = useState("tab1");
+
+  // return (
+  //   <>
+  //     <Confetti />
+  //   </>
+  // )
+
+
 
   return (
     <>
@@ -36,7 +48,7 @@ export default function Home() {
                   type="button"
                   className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gradient-to-r  hover:bg-gradient-to-r from-cyan-500 to-blue-600 focus:outline-none "
                 >
-                  Create Favorites...
+                  Choose tags{<PlusCircleIcon className='pl-2 h-7 w-7' />}
                 </button>
               </div>
             </div>
@@ -61,7 +73,7 @@ export default function Home() {
                        <TabContent id="tab1" activeTab={activeTab}>{<MediumTabs />}</TabContent>
                        <TabContent id="tab2" activeTab={activeTab}>{<DevTo />}</TabContent>
                        <TabContent id="tab3" activeTab={activeTab}>{<Hashnode />}</TabContent>
-                       <TabContent id="tab4" activeTab={activeTab}>{<Hashnode />}</TabContent>
+                       <TabContent id="tab4" activeTab={activeTab}>{<Github />}</TabContent>
                        <TabContent id="tab5" activeTab={activeTab}>{<Aws />}</TabContent>
 
                      </div>
