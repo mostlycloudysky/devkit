@@ -32,7 +32,7 @@ function HeaderProfile({session}) {
                     />
                 </Menu.Button>
             ) : (
-                <div onClick={() => signIn()} className="hidden cursor-pointer items-center space-x-2 border border-gray-100 p-2 lg:flex hover:bg-gradient-to-r from-cyan-600 to-blue-600 hover:text-white">
+                <div onClick={() => signIn()} className="hidden cursor-pointer items-center space-x-2 border border-gray-100 p-2 lg:flex hover:bg-gradient-to-r from-cyan-500 to-blue-600 hover:text-white">
                     <div className="relative h-5 w-5 flex-shrink-0">
                         <Image src="/github.png" layout="fill" alt="" />
                     </div>
