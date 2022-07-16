@@ -24,6 +24,7 @@ import {
   CheckCircleIcon,
   ChevronDownIcon,
   ChevronRightIcon,
+  HeartIcon,
   OfficeBuildingIcon,
   SearchIcon,
 } from '@heroicons/react/solid'
@@ -218,6 +219,7 @@ export default function Layout({children}) {
               </div>
             </nav>
           </div>
+
         </div>
 
         <div className="lg:pl-64 flex flex-col flex-1">
