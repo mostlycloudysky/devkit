@@ -1,6 +1,5 @@
 const axios = require('axios')
 let response;
-let awsBlogData;
 
 /**
  * Amazon API URL : https://aws.amazon.com/api/dirs/items/search?item.directoryId=blog-posts&sort_by=item.additionalFields.createdDate&sort_order=desc&size=10&item.locale=en_US
@@ -24,12 +23,10 @@ exports.lambdaHandler = async (event, context) => {
                 location: ret.data
             })
         }
-        
-
     } catch (err) {
         console.log(err);
         return err;
     }
 
-    return JSON.parse(response)
+    return response
 };
