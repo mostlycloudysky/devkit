@@ -17,11 +17,12 @@ exports.lambdaHandler = async (event, context) => {
 
     try {
         const ret = await axios(url);
+
         response = {
-            'statusCode': 200,
-            'body': JSON.stringify({
-                location: ret.data
-            })
+            statusCode: 200,
+            body: {
+                data: ret.data
+            }
         }
     } catch (err) {
         console.log(err);
