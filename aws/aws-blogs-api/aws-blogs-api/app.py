@@ -47,4 +47,9 @@ def lambda_handler(event, context):
         raise e
 
 
-    return parsed_blogs
+    return {
+        'statusCode': 200,
+        'body': "{}".format(
+           parsed_blogs     
+        )
+    } 
