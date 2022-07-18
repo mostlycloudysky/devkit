@@ -24,7 +24,8 @@ def lambda_handler(event, context):
             categories = []
             for tag in item['tags']:
                 description = json.loads(tag['description'])
-                categories.append(html.unescape(description['name']))
+                if not description['name'].startswith('*'):
+                    categories.append(html.unescape(description['name']))
 
             item_url = additional_fields['link']
             parsed_blogs.append({
