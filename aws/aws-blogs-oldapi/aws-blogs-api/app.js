@@ -1,6 +1,10 @@
 const axios = require('axios')
 let response;
 
+let payload = {
+"results":[]  
+}
+
 /**
  * Amazon API URL : https://aws.amazon.com/api/dirs/items/search?item.directoryId=blog-posts&sort_by=item.additionalFields.createdDate&sort_order=desc&size=10&item.locale=en_US
  */
@@ -17,6 +21,8 @@ exports.lambdaHandler = async (event, context) => {
 
     try {
         const ret = await axios(url);
+        
+
         response = {
             'statusCode': 200,
             'body': JSON.stringify({
