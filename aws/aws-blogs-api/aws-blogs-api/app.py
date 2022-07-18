@@ -1,42 +1,50 @@
 import json
+import requests
+import html
 
-# import requests
 
 
 def lambda_handler(event, context):
-    """Sample pure Lambda function
 
-    Parameters
-    ----------
-    event: dict, required
-        API Gateway Lambda Proxy Input Format
+    HTTP_BLOG_URL = (
+    'https://aws.amazon.com/api/dirs/items/search'
+    '?item.directoryId=blog-posts&sort_by=item.additionalFields.createdDate'
+    '&sort_order=desc&size=10&item.locale=en_US'
+    )
 
-        Event doc: https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html#api-gateway-simple-proxy-for-lambda-input-format
+    api_url = HTTP_BLOG_URL 
+    parsed_blogs = []
 
-    context: object, required
-        Lambda Context runtime methods and attributes
+    try:
+        response = requests.get(api_url)
+        blog_data = response.json()
 
-        Context doc: https://docs.aws.amazon.com/lambda/latest/dg/python-context-object.html
+        for item in blog_data['items']:
+            blog_item = item['item']
+            additional_fields = blog_item['additionalFields']
+            categories = []
+            for tag in item['tags']:
+                if tag['tagNamespaceId'] == 'blog-posts#category':
+                    description = json.loads(tag['description'])
+                    if not description['name'].startswith('*'):
+                       categories.append(html.unescape(description['name']))
 
-    Returns
-    ------
-    API Gateway Lambda Proxy Output Format: dict
+            item_url = additional_fields['link']
+            parsed_blogs.append({
+                "item_url": item_url,
+                'title': html.unescape(additional_fields['title']),
+                'categories': categories,
+                'post_excerpt': html.unescape(additional_fields.get('postExcerpt', '')),
+                'featured_image_url': additional_fields.get('featuredImageUrl'),
+                'authors': html.unescape(json.loads(blog_item['author'])),
+                'date_created': blog_item['dateCreated'],
+                'date_updated': blog_item['dateUpdated'],
+            })
 
-        Return doc: https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html
-    """
+    except requests.RequestException as e:
+        print(e)
 
-    # try:
-    #     ip = requests.get("http://checkip.amazonaws.com/")
-    # except requests.RequestException as e:
-    #     # Send some context about this error to Lambda Logs
-    #     print(e)
+        raise e
 
-    #     raise e
 
-    return {
-        "statusCode": 200,
-        "body": json.dumps({
-            "message": "hello world",
-            # "location": ip.text.replace("\n", "")
-        }),
-    }
+    return parsed_blogs
