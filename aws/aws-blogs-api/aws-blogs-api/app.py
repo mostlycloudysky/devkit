@@ -24,6 +24,7 @@ def lambda_handler(event, context):
             additional_fields = blog_item['additionalFields']
             categories = []
             for tag in item['tags']:
+                if tag['tagNamespaceId'] == 'blog-posts#category':
                     description = json.loads(tag['description'])
                     if not description['name'].startswith('*'):
                        categories.append(html.unescape(description['name']))
@@ -39,6 +40,8 @@ def lambda_handler(event, context):
                 'date_created': blog_item['dateCreated'],
                 'date_updated': blog_item['dateUpdated'],
             })
+
+            print(parsed_blogs)
 
 
             return {
