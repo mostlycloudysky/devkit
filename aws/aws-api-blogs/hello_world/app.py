@@ -18,10 +18,17 @@ def lambda_handler(event, context):
         for item in blog_data["items"]:
             blog_item = item['item']
             additional_fields = blog_item["additionalFields"]
-            item_url = additional_fields["link"]
+            categories = []
+            for tag in item['tags']:
+                if tag['tagNamespaceId'] == 'blog-posts#category':
+                    description = json.loads(tag['description'])
+                    if not description['name'].startswith('*'):
+                        categories.append(html.unescape(description['name']))
+
             parsed_blogs.append({
-                'item_url': item_url,
+                'item_url': additional_fields["link"],
                 'title': html.unescape(additional_fields['title']),
+                'categories': categories,
                 'post_excerpt': html.unescape(additional_fields.get('postExcerpt', '')),
                 'featured_image_url': additional_fields.get('featuredImageUrl'),
                 'authors': html.unescape(json.loads(blog_item['author'])),
