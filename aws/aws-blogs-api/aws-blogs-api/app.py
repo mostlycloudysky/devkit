@@ -41,15 +41,15 @@ def lambda_handler(event, context):
                 'date_updated': blog_item['dateUpdated'],
             })
 
+
+            return {
+                'statusCode': 200,
+                'body': "{}".format(
+                  parsed_blogs     
+                )
+            }
+
     except requests.RequestException as e:
         print(e)
 
-        raise e
 
-
-    return {
-        'statusCode': 200,
-        'body': "{}".format(
-           parsed_blogs     
-        )
-    } 
