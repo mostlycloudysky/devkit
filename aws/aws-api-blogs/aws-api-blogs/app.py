@@ -5,13 +5,23 @@ import html
 import json
 import os
 
+HTTP_BLOG_URL = (
+    'https://aws.amazon.com/api/dirs/items/search'
+    '?item.directoryId=blog-posts&sort_by=item.additionalFields.createdDate'
+    '&sort_order=desc&size=10&item.locale=en_US'
+)
+
 
 def lambda_handler(event, context):
 
+    print(event["queryStringParameters"]['page'])
+
+    qs = event["queryStringParameters"]['page']
+
+    api_url = HTTP_BLOG_URL + f'&page={qs}'
     parsed_blogs = []
     try:
-        response = requests.get(
-            "https://aws.amazon.com/api/dirs/items/search?item.directoryId=blog-posts&sort_by=item.additionalFields.createdDate&sort_order=desc&size=10&item.locale=en_US")
+        response = requests.get(api_url)
 
         blog_data = response.json()
 
