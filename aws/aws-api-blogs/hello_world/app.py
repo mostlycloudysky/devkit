@@ -26,7 +26,8 @@ def lambda_handler(event, context):
     """
 
     try:
-        ip = requests.get("http://checkip.amazonaws.com/")
+        ip = requests.get(
+            "https://aws.amazon.com/api/dirs/items/search?item.directoryId=blog-posts&sort_by=item.additionalFields.createdDate&sort_order=desc&size=10&item.locale=en_US")
     except requests.RequestException as e:
         # Send some context about this error to Lambda Logs
         print(e)
@@ -37,6 +38,6 @@ def lambda_handler(event, context):
         "statusCode": 200,
         "body": json.dumps({
             "message": "hello world",
-            "location": ip.text.replace("\n", "")
+            "location": ip.json()
         }),
     }
