@@ -3,16 +3,15 @@ import requests
 import html
 
 
-
 def lambda_handler(event, context):
 
     HTTP_BLOG_URL = (
-    'https://aws.amazon.com/api/dirs/items/search'
-    '?item.directoryId=blog-posts&sort_by=item.additionalFields.createdDate'
-    '&sort_order=desc&size=10&item.locale=en_US'
+        'https://aws.amazon.com/api/dirs/items/search'
+        '?item.directoryId=blog-posts&sort_by=item.additionalFields.createdDate'
+        '&sort_order=desc&size=10&item.locale=en_US'
     )
 
-    api_url = HTTP_BLOG_URL 
+    api_url = HTTP_BLOG_URL
     parsed_blogs = []
 
     try:
@@ -27,7 +26,7 @@ def lambda_handler(event, context):
                 if tag['tagNamespaceId'] == 'blog-posts#category':
                     description = json.loads(tag['description'])
                     if not description['name'].startswith('*'):
-                       categories.append(html.unescape(description['name']))
+                        categories.append(html.unescape(description['name']))
 
             item_url = additional_fields['link']
             parsed_blogs.append({
@@ -43,13 +42,5 @@ def lambda_handler(event, context):
 
             print(parsed_blogs)
 
-
-            return {
-                'statusCode': 200,
-                'body': parsed_blogs
-            }
-
     except requests.RequestException as e:
         print(e)
-
-
