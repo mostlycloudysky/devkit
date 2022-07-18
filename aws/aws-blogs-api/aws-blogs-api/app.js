@@ -5,15 +5,6 @@ let response;
  * Amazon API URL : https://aws.amazon.com/api/dirs/items/search?item.directoryId=blog-posts&sort_by=item.additionalFields.createdDate&sort_order=desc&size=10&item.locale=en_US
  */
 
-
-function extractData(allBlogs) {
-    parsedData = []
-
-
-
-
-}
-
 exports.lambdaHandler = async (event, context) => {
 
     if (event.httpMethod !== 'GET') {
@@ -26,15 +17,12 @@ exports.lambdaHandler = async (event, context) => {
 
     try {
         const ret = await axios(url);
-        // const extractedBlogs = extractData(ret.data)
-
-        return {extractedBlogs: ret.data}
-        // response = {
-        //     'statusCode': 200,
-        //     'body': JSON.stringify({
-        //         location: ret.data
-        //     })
-        // }
+        response = {
+            'statusCode': 200,
+            'body': JSON.stringify({
+                location: ret.data
+            })
+        }
     } catch (err) {
         console.log(err);
         return err;
