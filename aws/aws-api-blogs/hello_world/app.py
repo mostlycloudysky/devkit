@@ -1,4 +1,5 @@
 import json
+from traceback import print_tb
 import requests
 import html
 import json
@@ -29,6 +30,8 @@ def lambda_handler(event, context):
             'date_updated': blog_item['dateUpdated'],
         })
 
+        print(parsed_blogs)
+
     except requests.RequestException as e:
         # Send some context about this error to Lambda Logs
         print(e)
@@ -38,6 +41,6 @@ def lambda_handler(event, context):
     return {
         "statusCode": 200,
         "body": json.dumps({
-            "data": json.dumps(parsed_blogs)
+            "data": parsed_blogs
         }),
     }
