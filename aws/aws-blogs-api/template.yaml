@@ -23,7 +23,7 @@ Resources:
         AWSBlogs:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
-            Path: /awsblogs
+            Path: /awsblogsapi
             Method: get
 
 Outputs:
@@ -32,7 +32,7 @@ Outputs:
   # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
   AWSBlogsApi:
     Description: "API Gateway endpoint URL for Prod stage for Hello World function"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/awsblogs"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/awsblogsapi/"
   HelloWorldFunction:
     Description: "AWS Blogs API ARN"
     Value: !GetAtt AWSBlogsFunction.Arn
