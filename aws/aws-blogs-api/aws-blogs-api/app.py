@@ -44,9 +44,9 @@ def lambda_handler(event, context):
 
             return {
                 'statusCode': 200,
-                'body': "{}".format(
-                  parsed_blogs     
-                )
+                'body': json.dumps({
+                    "data": parsed_blogs
+                })
             }
 
     except requests.RequestException as e:
