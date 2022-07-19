@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import { GiftIcon } from '@heroicons/react/solid';
+import Link from 'next/link';
 
 function AwsCards({ blogs }) {
   console.log('Blogs within AWS card component', blogs);
@@ -15,12 +16,17 @@ function AwsCards({ blogs }) {
             >
               <article aria-labelledby='question-title-81614'>
                 <div>
-                  <h2
-                    id='question-title-81614'
-                    className='mt-4 mb-2 font-medium text-blue-800 text-xl'
-                  >
-                    {blog.title}
-                  </h2>
+                  <Link href={blog.item_url}>
+                    <a target='_blank' rel='noopener noreferrer'>
+                      <h2
+                        id='question-title-81614'
+                        className='mt-4 mb-2 font-medium text-blue-800 text-xl hover:underline'
+                      >
+                        {blog.title}
+                      </h2>
+                    </a>
+                  </Link>
+
                   <div className='flex space-x-3'>
                     <div className='min-w-0 flex-1'>
                       <p className='text-sm font-medium text-gray-900'>
@@ -39,11 +45,6 @@ function AwsCards({ blogs }) {
                 </div>
                 <div className='mt-2 text-sm text-gray-700 space-y-4'>
                   <p>{blog.post_excerpt}</p>
-                  {/* <p>
-                    Ultimately, I think that if you wanted to run the park
-                    successfully and keep visitors safe, the most important
-                    thing to prioritize would be&hellip;
-                  </p> */}
                 </div>
                 <div className='mt-6 flex justify-between space-x-8'>
                   <div className='flex space-x-6'>
