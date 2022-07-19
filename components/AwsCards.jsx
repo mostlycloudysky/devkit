@@ -2,7 +2,8 @@
 import React from 'react';
 import { GiftIcon } from '@heroicons/react/solid';
 
-function AwsCards() {
+function AwsCards({ blogs }) {
+  console.log('Blogs within AWS card component', blogs);
   return (
     <div className='mt-4'>
       <ul role='list' className='space-y-4'>

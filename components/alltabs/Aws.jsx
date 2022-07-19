@@ -12,16 +12,10 @@ function Aws() {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log('respone data', data);
         setAwsBlogs(data); // Set the toDo variable
         setIsLoading(false);
       });
   }, []);
-
-  // useEffect(() => {
-  //   setIsLoading(true);
-
-  // }, [])
 
   if (isLoading) {
     return <p>Loading....</p>;
@@ -41,7 +35,7 @@ function Aws() {
             )}
         </ul> */}
 
-      <AwsCards />
+      <AwsCards blogs={awsBlogs.data} />
     </>
   );
 }
