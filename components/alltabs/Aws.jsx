@@ -1,32 +1,32 @@
-import React, {useState, useEffect} from 'react'
-import AwsCards from '../AwsCards'
-
+import React, { useState, useEffect } from 'react';
+import AwsCards from '../AwsCards';
 
 function Aws() {
-
-  const [toDos, setToDos ] = useState()
-  const [isLoading, setIsLoading] = useState(false)
+  const [awsBlogs, setAwsBlogs] = useState();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-        setIsLoading(true)
-        fetch('https://jsonplaceholder.typicode.com/todos/')
-            .then(response => response.json())
-            .then(data => {
-                setToDos(data) // Set the toDo variable
-                setIsLoading(false)
-            })
-  }, [])
+    setIsLoading(true);
+    fetch(
+      'https://djawhtqabb.execute-api.us-east-1.amazonaws.com/Prod/awsblogs?page=1'
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setAwsBlogs(data); // Set the toDo variable
+        setIsLoading(false);
+      });
+  }, []);
 
   if (isLoading) {
-    return <p>Loading....</p>
+    return <p>Loading....</p>;
   }
-  if (!toDos) {
-    return <p>No List to show</p>
+  if (!awsBlogs) {
+    return <p>No List to show</p>;
   }
 
   return (
     <>
-        {/* <h1>TODO List</h1>
+      {/* <h1>TODO List</h1>
         <ul>
             {toDos.map( toDo =>
                 <li key={toDo.id}>
@@ -35,10 +35,9 @@ function Aws() {
             )}
         </ul> */}
 
-        <AwsCards />
-      
+      <AwsCards blogs={awsBlogs.data} />
     </>
-  )
+  );
 }
 
-export default Aws
+export default Aws;
