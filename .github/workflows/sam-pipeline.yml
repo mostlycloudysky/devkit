@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - aws-support-
+      - add-aws-page
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
