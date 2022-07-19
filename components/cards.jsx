@@ -4,7 +4,6 @@ import React from 'react'
 function Cards() {
   return (
     <div className="mt-4">
-    <h1 className="sr-only">Recent questions</h1>
     <ul role="list" className="space-y-4">
       <li className="bg-white px-4 py-6 shadow sm:p-6 sm:rounded-lg">
         <article aria-labelledby="question-title-81614">
