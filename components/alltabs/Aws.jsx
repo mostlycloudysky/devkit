@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AwsCards from '../AwsCards';
+import Pagination from '../Pagination';
 
 function Aws() {
   const [awsBlogs, setAwsBlogs] = useState();
@@ -46,6 +47,7 @@ function Aws() {
         </ul> */}
 
       <AwsCards blogs={awsBlogs.data} />
+      <Pagination />
     </>
   );
 }
