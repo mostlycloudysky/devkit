@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AwsCards from '../AwsCards';
+import Pagination from '../Pagination';
 
 function Aws() {
   const [awsBlogs, setAwsBlogs] = useState();
@@ -18,7 +19,17 @@ function Aws() {
   }, []);
 
   if (isLoading) {
-    return <p>Loading....</p>;
+    return (
+      <>
+        <div className='min-h-screen flex justify-center items-center'>
+          <div className='loader bg-black p-5 rounded-full flex space-x-3'>
+            <div className='w-5 h-5 bg-blue-600 rounded-full animate-bounce'></div>
+            <div className='w-5 h-5 bg-cyan-600 rounded-full animate-bounce'></div>
+            <div className='w-5 h-5 bg-gray-100 rounded-full animate-bounce'></div>
+          </div>
+        </div>
+      </>
+    );
   }
   if (!awsBlogs) {
     return <p>No List to show</p>;
@@ -36,6 +47,7 @@ function Aws() {
         </ul> */}
 
       <AwsCards blogs={awsBlogs.data} />
+      <Pagination />
     </>
   );
 }

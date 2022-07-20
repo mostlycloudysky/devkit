@@ -256,7 +256,9 @@ export default function Layout({ children }) {
             </button>
             {/* Search bar */}
             <div className='flex-1 px-4 flex justify-between sm:px-6 lg:max-w-6xl lg:mx-auto lg:px-8'>
-              <div className='flex-1 flex'>
+              <div className='flex-1 flex font-extrabold text-transparent pt-4 text-2xl bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600'>
+                Open Source Developer Chain Built with Web 3.0 Integrated to Web
+                2.0
                 {/* <form className="w-full flex md:ml-0" action="#" method="GET">
                   <label htmlFor="search-field" className="sr-only">
                     Search
