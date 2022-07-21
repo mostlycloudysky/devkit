@@ -77,6 +77,7 @@ export default function Layout({ children }) {
     const timer = setTimeout(() => setConfettiFlag('false'), 6000);
     return () => clearTimeout(timer);
   }, []);
+
   return (
     <>
       <div className='min-h-full'>

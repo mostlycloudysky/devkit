@@ -6,17 +6,88 @@ function Aws() {
   const [awsBlogs, setAwsBlogs] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
+
+  const [pageNumberLimit, setPageNumberLimit] = useState(6);
+  const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(6);
+  const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
+
+  const handleClick = (event) => {
+    setCurrentPage(Number(event.target.id));
+  };
+
+  const pages = [];
+
+  for (let i = 1; i <= Math.ceil(100 / itemsPerPage); i++) {
+    pages.push(i);
+  }
+
+  console.log('Total page navigation', pages);
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+
+  const renderPageNumbers = pages.map((number) => {
+    if (number < maxPageNumberLimit + 1 && number > minPageNumberLimit) {
+      return (
+        <li
+          key={number}
+          id={number}
+          className={`flex flex-row items-center ${
+            currentPage == number ? 'active' : null
+          }`}
+          onClick={handleClick}
+        >
+          {number}
+        </li>
+      );
+    } else {
+      return null;
+    }
+  });
+
   useEffect(() => {
     setIsLoading(true);
     fetch(
-      'https://djawhtqabb.execute-api.us-east-1.amazonaws.com/Prod/awsblogs?page=1'
+      `https://djawhtqabb.execute-api.us-east-1.amazonaws.com/Prod/awsblogs?page=${currentPage}`
     )
       .then((response) => response.json())
       .then((data) => {
         setAwsBlogs(data); // Set the toDo variable
         setIsLoading(false);
       });
-  }, []);
+  }, [currentPage]);
+
+  const handleNextBtn = () => {
+    setCurrentPage(currentPage + 1);
+    if (currentPage + 1 > maxPageNumberLimit) {
+      setMaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
+      setMinPageNumberLimit(minPageNumberLimit + pageNumberLimit);
+    }
+  };
+
+  const handlePrevBtn = () => {
+    setCurrentPage(currentPage - 1);
+    if ((currentPage - 1) % pageNumberLimit == 0) {
+      setMaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
+      setMinPageNumberLimit(minPageNumberLimit - pageNumberLimit);
+    }
+  };
+
+  const handleLoadMore = () => {
+    setCurrentPage(currentPage + 1);
+  };
+
+  let pageIncrementBtn = null;
+  if (pages.length > maxPageNumberLimit) {
+    pageIncrementBtn = <li onClick={handleNextBtn}> &hellip; </li>;
+  }
+
+  let pageDecrementBtn = null;
+  if (pages.length > maxPageNumberLimit) {
+    pageDecrementBtn = <li onClick={handlePrevBtn}> &hellip; </li>;
+  }
 
   if (isLoading) {
     return (
@@ -48,6 +119,30 @@ function Aws() {
 
       <AwsCards blogs={awsBlogs.data} />
       <Pagination />
+      <div className='flex space-x-4 items-center cursor-pointer text-2xl'>
+        <li className=' flex'>
+          <button
+            onClick={handlePrevBtn}
+            disabled={currentPage == pages[0] ? true : false}
+          >
+            Prev
+          </button>
+        </li>
+        {pageDecrementBtn}
+        {renderPageNumbers}
+        {pageIncrementBtn}
+        <li className=' flex'>
+          <button
+            onClick={handleNextBtn}
+            disabled={currentPage == pages[pages.length - 1] ? true : false}
+          >
+            Next
+          </button>
+        </li>
+      </div>
+      <div className=' flex justify-center items-center'>
+        <button onClick={handleLoadMore}>Load more</button>
+      </div>
     </>
   );
 }
