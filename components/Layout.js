@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-import { Children, Fragment, useState } from 'react';
+import { Children, Fragment, useState, useEffect } from 'react';
 import { Dialog, Menu, Transition } from '@headlessui/react';
+import Confetti from 'react-confetti';
 import {
   BellIcon,
   ClockIcon,
@@ -69,6 +70,13 @@ export default function Layout({ children }) {
   const router = useRouter();
   const currentRoute = router.pathname;
   const { data: session } = useSession();
+
+  const [confettiFlag, setConfettiFlag] = useState('true');
+
+  useEffect(() => {
+    const timer = setTimeout(() => setConfettiFlag('false'), 6000);
+    return () => clearTimeout(timer);
+  }, []);
   return (
     <>
       <div className='min-h-full'>
@@ -132,7 +140,7 @@ export default function Layout({ children }) {
                         alt='logo'
                       />
                       <span className='pl-2 font-bold text-white text-xl'>
-                        DevKit
+                        DevChain
                       </span>
                     </div>
                   </div>
@@ -198,7 +206,9 @@ export default function Layout({ children }) {
                 src='/logo.png'
                 alt='logo'
               />
-              <span className='pl-2 font-bold text-white text-xl'>DevKit</span>
+              <span className='pl-2 font-bold text-white text-xl'>
+                DevChain
+              </span>
             </div>
             <nav
               className='mt-5 flex-1 flex flex-col divide-y bg-black overflow-y-auto'
@@ -291,7 +301,14 @@ export default function Layout({ children }) {
               </div>
             </div>
           </div>
-          <main className='flex-1 pb-8'>{children}</main>
+          <main className='flex-1 pb-8'>
+            {confettiFlag === 'true' ? (
+              <Confetti width={2000} height={2000} />
+            ) : (
+              ''
+            )}
+            {children}
+          </main>
         </div>
       </div>
     </>
