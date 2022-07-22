@@ -44,6 +44,7 @@ def lambda_handler(event, context):
                 'authors': html.unescape(json.loads(blog_item['author'])),
                 'date_created': blog_item['dateCreated'],
                 'date_updated': blog_item['dateUpdated'],
+                'id': blog_item['id']
             })
 
             print(parsed_blogs)
