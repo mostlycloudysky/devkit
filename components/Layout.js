@@ -35,13 +35,25 @@ import HeaderProfile from './HeaderProfile';
 import { useSession } from 'next-auth/react';
 
 const navigation = [
-  { name: 'Home', href: '/', icon: HomeIcon, current: true },
-  { name: 'For you', href: '/foryou', icon: CodeIcon, current: false },
-  { name: 'Trending', href: '/trending', icon: TrendingUpIcon, current: false },
-  { name: 'Playground', href: '/playground', icon: PlayIcon, current: false },
+  { name: 'Home', href: '/', icon: HomeIcon, current: true, id: 1 },
+  { name: 'Codeshare', href: '/foryou', icon: CodeIcon, current: false, id: 2 },
+  {
+    name: 'Trending',
+    href: '/trending',
+    icon: TrendingUpIcon,
+    current: false,
+    id: 3,
+  },
+  {
+    name: 'Playground',
+    href: '/playground',
+    icon: PlayIcon,
+    current: false,
+    id: 4,
+  },
 ];
 const secondaryNavigation = [
-  { name: 'Settings', href: '/settings', icon: CogIcon },
+  { name: 'Settings', href: '/settings', icon: CogIcon, id: 1 },
 ];
 const cards = [
   { name: 'Account balance', href: '#', icon: ScaleIcon, amount: '$30,659.45' },
@@ -152,7 +164,7 @@ export default function Layout({ children }) {
                     <div className='px-2 space-y-1'>
                       {navigation.map((item) => (
                         <a
-                          key={item.name}
+                          key={item.id}
                           href={item.href}
                           className={classNames(
                             item.current
@@ -174,7 +186,7 @@ export default function Layout({ children }) {
                       <div className='px-2 space-y-1'>
                         {secondaryNavigation.map((item) => (
                           <a
-                            key={item.name}
+                            key={item.id}
                             href={item.href}
                             className='group flex items-center px-2 py-2 text-base font-medium rounded-md text-blue-100 hover:text-white hover:bg-blue-600'
                           >
@@ -217,7 +229,7 @@ export default function Layout({ children }) {
             >
               <div className='px-2 space-y-1'>
                 {navigation.map((item) => (
-                  <Link href={item.href} key={item.key}>
+                  <Link href={item.href} key={item.id}>
                     <a
                       className={classNames(
                         currentRoute === item.href
@@ -236,7 +248,7 @@ export default function Layout({ children }) {
                 <div className='px-2 space-y-1'>
                   {secondaryNavigation.map((item) => (
                     <a
-                      key={item.name}
+                      key={item.id}
                       href={item.href}
                       className='group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md text-blue-100 hover:text-white hover:bg-blue-600'
                     >
@@ -251,7 +263,6 @@ export default function Layout({ children }) {
               </div>
             </nav>
           </div>
-
         </div>
 
         <div className='lg:pl-64 flex flex-col flex-1'>

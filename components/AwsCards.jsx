@@ -4,14 +4,14 @@ import { GiftIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
 
 function AwsCards({ blogs }) {
-  console.log('Blogs within AWS card component', blogs);
+  // console.log('Blogs within AWS card component', blogs);
   return (
     <>
       <div className='mt-4'>
         <ul role='list' className='space-y-4'>
           {blogs.map((blog) => (
             <li
-              key={blog.title}
+              key={blog.id}
               className='bg-white px-4 py-6 shadow sm:p-6 sm:rounded-lg'
             >
               <article aria-labelledby='question-title-81614'>
@@ -31,7 +31,7 @@ function AwsCards({ blogs }) {
                     <div className='min-w-0 flex-1'>
                       <p className='text-sm font-medium text-gray-900'>
                         {blog.authors.map((author) => (
-                          <a key={blog.title} href='#' className='mr-1'>
+                          <a key={blog.id} href='#' className='mr-1'>
                             {author}
                           </a>
                         ))}
@@ -51,7 +51,7 @@ function AwsCards({ blogs }) {
                     <div>
                       <ul role='list' className='mt-2 leading-8'>
                         {blog.categories.map((category) => (
-                          <li className='inline' key={blog.title}>
+                          <li className='inline' key={blog.id}>
                             <a
                               href='#'
                               className='relative inline-flex items-center rounded-full border border-gray-300 px-3 py-0.5'

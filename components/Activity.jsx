@@ -8,60 +8,70 @@ function Activity() {
       commit: '2d89f0c8',
       environment: 'production',
       time: '1h',
+      id: 1,
     },
     {
       project: 'Workcation',
       commit: '2d89f0c8',
       environment: 'production',
       time: '1h',
+      id: 2,
     },
     {
       project: 'Workcation',
       commit: '2d89f0c8',
       environment: 'production',
       time: '1h',
+      id: 3,
     },
     {
       project: 'Workcation',
       commit: '2d89f0c8',
       environment: 'production',
       time: '1h',
+      id: 4,
     },
     {
       project: 'Workcation',
       commit: '2d89f0c8',
       environment: 'production',
       time: '1h',
+      id: 5,
     },
     {
       project: 'Workcation',
       commit: '2d89f0c8',
       environment: 'production',
       time: '1h',
+      id: 6,
     },
     {
       project: 'Workcation',
       commit: '2d89f0c8',
       environment: 'production',
       time: '1h',
+      id: 7,
     },
     {
       project: 'Workcation',
       commit: '2d89f0c8',
       environment: 'production',
       time: '1h',
+      id: 8,
     },
     {
       project: 'Workcation',
       commit: '2d89f0c8',
       environment: 'production',
       time: '1h',
+      id: 9,
     },
     {
       project: 'Workcation',
       commit: '2d89f0c8',
       environment: 'production',
       time: '1h',
+      id: 10,
     },
   ];
 
@@ -72,7 +82,7 @@ function Activity() {
       </div>
       <ul role='list' className='divide-y divide-gray-200'>
         {activityItems.map((item) => (
-          <li key={item.commit} className='py-4'>
+          <li key={item.id} className='py-4'>
             <div className='flex space-x-3'>
               <img
                 className='h-6 w-6 rounded-full'

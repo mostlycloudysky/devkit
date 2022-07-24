@@ -53,14 +53,8 @@ function Aws() {
   return (
     <>
       <AwsCards blogs={awsBlogs.data} />
-      {/* <Pagination /> */}
     </>
   );
 }
 
 export default Aws;
-
-// export const getStaticProps = async () => {
-
-//   const data = await fetch
-// }
