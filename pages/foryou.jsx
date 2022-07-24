@@ -22,7 +22,9 @@ function foryou() {
           </div>
         </div>
       </div>
-      <Cards />
+      <div className='flex-grow w-full max-w-7xl mx-auto xl:px-8 lg:flex pt-5'>
+        <Cards />
+      </div>
     </>
   );
 }
