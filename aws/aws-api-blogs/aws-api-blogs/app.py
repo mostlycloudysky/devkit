@@ -33,7 +33,6 @@ def lambda_handler(event, context):
                 if tag['tagNamespaceId'] == 'blog-posts#category':
                     description = json.loads(tag['description'])
                     if not description['name'].startswith('*'):
-                        categories.append(tag['id'])
                         categories.append(html.unescape(description['name']))
 
             parsed_blogs.append({
