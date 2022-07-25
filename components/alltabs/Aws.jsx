@@ -1,22 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import AwsCards from '../AwsCards';
-import Pagination from '../Pagination';
 
 function Aws() {
   const [awsBlogs, setAwsBlogs] = useState();
   const [isLoading, setIsLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     setIsLoading(true);
     fetch(
-      'https://djawhtqabb.execute-api.us-east-1.amazonaws.com/Prod/awsblogs?page=1'
+      `https://djawhtqabb.execute-api.us-east-1.amazonaws.com/Prod/awsblogs?page=${currentPage}`
     )
       .then((response) => response.json())
       .then((data) => {
         setAwsBlogs(data); // Set the toDo variable
         setIsLoading(false);
       });
-  }, []);
+  }, [currentPage]);
+
+  // https://upmostly.com/tutorials/react-infinite-scroll
+  function handleScroll() {
+    var isAtBottom =
+      document.documentElement.scrollHeight -
+        document.documentElement.scrollTop <=
+      document.documentElement.clientHeight;
+
+    if (isAtBottom) {
+      // Load next posts
+      setCurrentPage(currentPage + 1);
+    }
+  }
+
+  window.addEventListener('scroll', handleScroll);
 
   if (isLoading) {
     return (
@@ -37,17 +52,7 @@ function Aws() {
 
   return (
     <>
-      {/* <h1>TODO List</h1>
-        <ul>
-            {toDos.map( toDo =>
-                <li key={toDo.id}>
-                    {toDo.title} - <span>( {toDo.completed ? 'Completed' : 'Not Completed'} )</span>
-                </li>
-            )}
-        </ul> */}
-
       <AwsCards blogs={awsBlogs.data} />
-      <Pagination />
     </>
   );
 }

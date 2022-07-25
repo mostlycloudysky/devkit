@@ -9,9 +9,9 @@ function AwsCards({ blogs }) {
     <>
       <div className='mt-4'>
         <ul role='list' className='space-y-4'>
-          {blogs.map((blog) => (
+          {blogs.map((blog, index) => (
             <li
-              key={blog.title}
+              key={index}
               className='bg-white px-4 py-6 shadow sm:p-6 sm:rounded-lg'
             >
               <article aria-labelledby='question-title-81614'>
@@ -30,8 +30,8 @@ function AwsCards({ blogs }) {
                   <div className='flex space-x-3'>
                     <div className='min-w-0 flex-1'>
                       <p className='text-sm font-medium text-gray-900'>
-                        {blog.authors.map((author) => (
-                          <a key={blog.title} href='#' className='mr-1'>
+                        {blog.authors.map((author, index) => (
+                          <a key={index} href='#' className='mr-1'>
                             {author}
                           </a>
                         ))}
@@ -50,8 +50,8 @@ function AwsCards({ blogs }) {
                   <div className='flex space-x-6'>
                     <div>
                       <ul role='list' className='mt-2 leading-8'>
-                        {blog.categories.map((category) => (
-                          <li className='inline' key={blog.title}>
+                        {blog.categories.map((category, index) => (
+                          <li className='inline' key={index}>
                             <a
                               href='#'
                               className='relative inline-flex items-center rounded-full border border-gray-300 px-3 py-0.5'
