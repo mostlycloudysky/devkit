@@ -153,7 +153,7 @@ export default function Layout({ children }) {
                         alt='logo'
                       />
                       <span className='pl-2 font-bold text-white text-xl'>
-                        DevChain
+                        DevKit
                       </span>
                     </div>
                   </div>
@@ -219,9 +219,7 @@ export default function Layout({ children }) {
                 src='/logo.png'
                 alt='logo'
               />
-              <span className='pl-2 font-bold text-white text-xl'>
-                DevChain
-              </span>
+              <span className='pl-2 font-bold text-white text-xl'>DevKit</span>
             </div>
             <nav
               className='mt-5 flex-1 flex flex-col divide-y bg-black overflow-y-auto'
